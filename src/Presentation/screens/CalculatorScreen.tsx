@@ -6,7 +6,6 @@ import useCalculaor from '../hooks/useCalculaor'
 
 const CalculatorScreen = () => {
 
-   //llamaremos el número desde useCalculator
    const{
     number,
     buildNumber,
