@@ -18,6 +18,7 @@ const useCalculaor = () => {
     const[formula, setFormula]=useState('')
     const[result, setResult]=useState('0')
 
+    //es como el onchange
     useEffect(()=>{
 
          setFormula(number)
@@ -25,20 +26,25 @@ const useCalculaor = () => {
         if(lastOperation.current){
             
             setFormula(`${firstFormulaPart} ${lastOperation.current} ${number}`)
-
         }else{
             setFormula(number)
         }
 
-    },[number])
+            //cada que cambie el resultado se va ir actualizando
+            const result = CalculateSubResult();
+            setResult(`${result}`)
+
+    },[number, formula])
 
     const setLastNumber = () => {
+
+        
         if (number.endsWith('.')) {
             setPrevNumber(number.slice(0, -1))
         } else {
             setPrevNumber(number)
         }
-        setNumber('0')
+        setNumber('') // lo colocamos en vacío para que no muestre ese 0 después de colocar el signo
     }
 
     const divideOperation = () => {
